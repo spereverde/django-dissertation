@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Dissertation, Person
+
+admin.site.register(Dissertation)
+admin.site.register(Person)
