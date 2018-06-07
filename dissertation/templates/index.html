@@ -1,0 +1,16 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+    {% if dlist %}
+    <ul>
+    {% for d in dlist %}
+        <li><a href="/diss/{{ d.id }}/">{{ d.title }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No dissertations are available.</p>
+    {% endif %}
+    </body>
+</html>
