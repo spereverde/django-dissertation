@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Cluster detail page{% endblock %}
+
+{% block content %}
+
+    <p><a href="/clusterlist/">back to clusters list</a></p>
+    <h2>
+        {{cluster}}
+    </h2>
+    <p>{{cluster.id}}</p>
+
+{% endblock %}

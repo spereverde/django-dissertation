@@ -1,34 +1,41 @@
-from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import get_object_or_404, render
+from django.views.generic import ListView
 
-from .models import Dissertation
+from .models import Dissertation, Cluster, DissertationCluster
 
-def dissertation_list(request):
-    dlist = Dissertation.objects.order_by('title')
-    template = loader.get_template('index.html')
-    context = {
-        'dlist': dlist,
-    }
-    return HttpResponse(template.render(context, request))
 
 # def dissertation_list(request):
+#     # import pdb; pdb.set_trace()
 #     dlist = Dissertation.objects.order_by('title')
-#     output = ', '.join([d.title for d in dlist])
-#     return HttpResponse(output)
+#     context = {'dlist': dlist}
+#     return render(request, 'dissertation/index.html', context)
     
 def detail(request, diss_id):
-    diss = Dissertation.objects.filter(id=diss_id)
-    # import pdb; pdb.set_trace()
-    dtitle = [d.__str__() for d in diss]
-    # dtitle = [d.title for d in diss][0]
-    output = "You're looking at dissertation {}. The title is {}".format(
-        diss_id, dtitle)
-    return HttpResponse(output)
+    diss = get_object_or_404(Dissertation, pk=diss_id)
+    return render(request, 'dissertation/detail.html', {'diss': diss})
 
-def results(request, diss_id):
-    response = "You're looking at the results of dissertation {}.".format(diss_id)
-    return HttpResponse(response)
-    
+# def cluster_list(request):
+#     clist = Cluster.objects.order_by('name')
+#     context = {'clist': clist}
+#     return render(request, 'cluster/index.html', context)
 
-def vote(request, diss_id):
-    return HttpResponse("You're voting on dissertation {}.".format(diss_id))
+def cluster_detail(request, cluster_id):
+    cluster = get_object_or_404(Cluster, pk=cluster_id)
+    return render(request, 'cluster/detail.html', {'cluster': cluster})
+
+class DissertationList(ListView):
+    model = Dissertation
+
+class ClusterList(ListView):
+    model = Cluster
+
+class DissPerClusterList(ListView):
+    model = DissertationCluster
+
+class DissByClusterList(ListView):
+
+    template_name = 'dissertations_by_cluster.html'
+
+    def get_queryset(self):
+        self.cluster = get_object_or_404(Cluster, name=self.kwargs['cluster'])
+        return DissertationCluster.objects.filter(cluster=self.cluster)

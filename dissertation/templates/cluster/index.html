@@ -1,0 +1,9 @@
+{% if clist %}
+<ul>
+{% for c in clist %}
+    <li><a href="/cluster/{{ c.id }}/">{{ c.name }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+    <p>No clusters are available.</p>
+{% endif %}

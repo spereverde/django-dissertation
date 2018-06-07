@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Dissertation detail page{% endblock %}
+
+{% block content %}
+
+    <p><a href="/disslist/">back to dissertations list</a></p>
+    <h2>
+        {{diss}}
+    </h2>
+    <p>{{diss.id}}</p>
+
+    <p>{{diss.description}}</p>
+
+{% endblock %}

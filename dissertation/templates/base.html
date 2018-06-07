@@ -1,0 +1,55 @@
+<!--% load blog_tags %-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KU Leuven</title>
+
+	<!-- Google Fonts used in the housestyle -->
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Material+Icons|Open+Sans:400italic,600italic,700italic,400,700,600|Merriweather:400italic,400,700">
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//stijl.kuleuven.be/releases/latest/css/main.css">
+  </head>
+  <body>
+    <div class="l-page">
+
+        <!--% include_external 'https://stijl.kuleuven.be/2016/includes/header.en.inc' %-->
+
+        <nav class="local-header">
+			<div class="container container-relative">
+    			<h2><a href="#"><i class="material-icons">home</i> {% block title %}{% endblock %}</a>
+    			</h2>
+  			</div>
+        </nav>
+        
+        <div role="main">
+            <div class="container">
+
+                {% block content %}{% endblock %}
+                
+             </div>
+        </div>
+
+        <footer class="local-footer">
+        	<div class="footer-navbar">
+    		<div class="container">
+            	<div class="reactionfull">
+            		<span>Reacties op inhoud:</span>
+            		<a class="reaction" href="mailto:wms@icts.kuleuven.be">ICTS - FII</a>
+        		</div>
+    		</div>
+  			</div>
+		</footer>
+        
+        <!--% include_external 'https://stijl.kuleuven.be/2016/includes/footer.en.inc' %-->
+
+    </div>
+    <aside class="flyout-menu" class="flyout ...">
+       <!--% include_external 'https://stijl.kuleuven.be/2016/includes/flyout.en.inc' %--> 
+    </aside>
+    <!-- Latest compiled and minified JS -->
+    <script src="//stijl.kuleuven.be/releases/latest/js/all.min.js"></script>
+  </body>
+</html>

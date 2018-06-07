@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dissertations
+{% endblock %}
+
+{% block content %}
+
+    {% if object_list %}
+    <ul>
+        {% for d in object_list %}
+            <li>
+                {{ d.id }} - 
+                <a href="/diss/{{ d.id }}">
+                    {{ d.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No dissertations are available.</p>
+    {% endif %}
+
+{% endblock %}
