@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add / Edit a dissertation
+{% endblock %}
+
+{% if user.is_authenticated %}
+{% block content %}
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Save" />
+    </form>
+{% endblock %}
+{% else %}
+<p>You are not authorised to add a form</p>
+{% endif %}

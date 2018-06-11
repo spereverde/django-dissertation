@@ -1,15 +1,18 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Dissertation(models.Model):
     title = models.CharField(max_length=300)
     description = models.CharField(max_length=600, default='')
-    active = models.BooleanField()
-    pub_date = models.DateTimeField('date published')
+    active = models.BooleanField(default=False)
+    # pub_date = models.DateTimeField(null=True, blank=True)
     # cluster = ManyToManyField('Cluster')
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('dissertation-detail', kwargs={'diss_id': self.pk})
 
 
 class Person(models.Model):
