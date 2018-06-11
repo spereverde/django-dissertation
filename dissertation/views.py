@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 
-from .models import Dissertation, Cluster, DissertationCluster
+from .models import Dissertation, Cluster
 
 
 # def dissertation_list(request):
@@ -21,6 +21,7 @@ def detail(request, diss_id):
 
 def cluster_detail(request, cluster_id):
     cluster = get_object_or_404(Cluster, pk=cluster_id)
+    # import pdb; pdb.set_trace()
     return render(request, 'cluster/detail.html', {'cluster': cluster})
 
 class DissertationList(ListView):
@@ -29,8 +30,8 @@ class DissertationList(ListView):
 class ClusterList(ListView):
     model = Cluster
 
-class DissPerClusterList(ListView):
-    model = DissertationCluster
+# class DissPerClusterList(ListView):
+#    model = DissertationCluster
 
 class DissByClusterList(ListView):
 

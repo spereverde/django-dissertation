@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-from dissertation.views import DissertationList, ClusterList, DissPerClusterList
+from dissertation.views import DissertationList, ClusterList
 
 urlpatterns = [
     # ex: /diss/
@@ -17,5 +17,5 @@ urlpatterns = [
     path('disslist/', DissertationList.as_view()),
     path('clusterlist/', ClusterList.as_view()),
 
-    path('dpc/', DissPerClusterList.as_view()),
+    # path('dpc/', DissPerClusterList.as_view()),
  ]

@@ -9,5 +9,12 @@
         {{cluster}}
     </h2>
     <p>{{cluster.id}}</p>
+    <ul>
+    {% for d in cluster.dissertation.values %}
+        <li>
+            {{ d.title }}
+        </li>
+    {% endfor %}
+    </ul>
 
 {% endblock %}

@@ -6,6 +6,7 @@ class Dissertation(models.Model):
     description = models.CharField(max_length=600, default='')
     active = models.BooleanField()
     pub_date = models.DateTimeField('date published')
+    # cluster = ManyToManyField('Cluster')
 
     def __str__(self):
         return self.title
@@ -23,6 +24,7 @@ class Person(models.Model):
 class Cluster(models.Model):
     name = models.CharField(max_length=200)
     active = models.BooleanField()
+    dissertation = models.ManyToManyField('Dissertation')
 
     def __str__(self):
         return self.name
@@ -43,12 +45,13 @@ class ClusterPersonRole(models.Model):
         return "{} - {} - {}".format(self.cluster, self.person, self.role)
 
 
-class DissertationCluster(models.Model):
-    cluster = models.ForeignKey(Cluster, on_delete=models.CASCADE)
-    diss = models.ForeignKey(Dissertation, on_delete=models.CASCADE)
+# class DissertationCluster(models.Model):
+#     cluster = models.ForeignKey(Cluster, on_delete=models.CASCADE)
+#     diss = models.ForeignKey(Dissertation, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return "{} - {}".format(self.cluster, self.diss)
+#     def __str__(self):
+#         return "{} - {}".format(self.cluster, self.diss)
+
 
 class DissertationPreference(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
