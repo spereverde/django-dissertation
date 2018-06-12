@@ -14,15 +14,7 @@ def cluster_detail(request, cluster_id):
     # import pdb; pdb.set_trace()
     return render(request, 'cluster/detail.html', {'cluster': cluster})
 
-# def dissertation_list(request):
-#     dlist = Dissertation.objects.order_by('title')
-#     context = {'dlist': dlist}
-#     return render(request, 'dissertation/index.html', context)
 
-# def cluster_list(request):
-#     clist = Cluster.objects.order_by('name')
-#     context = {'clist': clist}
-#     return render(request, 'cluster/index.html', context)
 
 class DissertationCreate(CreateView):
     model = Dissertation
@@ -36,3 +28,9 @@ class DissertationList(ListView):
 class ClusterList(ListView):
     model = Cluster
 
+
+
+class ClusterWithActiveDiss(ListView):
+    context_object_name = 'dpc'
+    queryset = Cluster.objects.filter(dissertation__active=True)
+    template_name = 'cluster/active_diss.html'

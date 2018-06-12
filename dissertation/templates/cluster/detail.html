@@ -8,13 +8,37 @@
     <h2>
         {{cluster}}
     </h2>
-    <p>{{cluster.id}}</p>
+    
+    <h3>Active dissertations for this cluster</h3>
     <ul>
     {% for d in cluster.dissertation.values %}
+        {% if d.active %}
         <li>
-            {{ d.title }}
+            <a href={% url 'dissertation-detail' d.id %}>
+                {{ d.title }}
+            </a>
         </li>
+        {% endif %}
     {% endfor %}
     </ul>
+    
+    {% if perms.dissertation.add_dissertation %}
+    <h3>Non active dissertations for this cluster</h3>
+
+    {% for d in cluster.dissertation.values %}
+    <ul>
+        {% if not d.active %}
+        <li>
+            <a href={% url 'dissertation-detail' d.id %}>
+                {{d.title}}
+            </a>
+        </li>    
+        {% endif %}
+    </ul>
+    {% endfor %}
+    {% endif %}
+    
+
+    
 
 {% endblock %}

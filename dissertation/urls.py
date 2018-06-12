@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 # from django.contrib.auth import views as auth_views
 
 from . import views
-from dissertation.views import DissertationList, ClusterList, DissertationCreate
+from dissertation.views import DissertationList, ClusterList, DissertationCreate, ClusterWithActiveDiss
 
 urlpatterns = [
     # ex: /diss/
@@ -16,6 +16,7 @@ urlpatterns = [
     # ex: /cluster/5/
     path('cluster/<int:cluster_id>/', views.cluster_detail, name='detail'),
     path('clusterlist/', ClusterList.as_view(), name='clusterlist'),
+    path('cluster/active', ClusterWithActiveDiss.as_view(), name='activediss')
 
  ]
 
