@@ -33,7 +33,6 @@ class DissertationList(ListView):
     model = Dissertation
 
 
-
 class ClusterList(ListView):
     model = Cluster
 

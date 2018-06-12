@@ -6,6 +6,9 @@
 
 {% block content %}
 
+<!-- this shows all permissions for the dissertation app -->
+{{ perms.dissertation }}
+
     {% if object_list %}
     <ul>
         {% for d in object_list %}
@@ -20,5 +23,6 @@
     {% else %}
         <p>No dissertations are available.</p>
     {% endif %}
+
 
 {% endblock %}
