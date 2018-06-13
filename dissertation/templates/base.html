@@ -1,4 +1,4 @@
-<!--% load blog_tags %-->
+{% load dissertation_extras %}
 <!doctype html>
 <html>
   <head>
@@ -15,7 +15,7 @@
   <body>
     <div class="l-page">
 
-        <!--% include_external 'https://stijl.kuleuven.be/2016/includes/header.en.inc' %-->
+        {% include_external 'https://stijl.kuleuven.be/2016/includes/header.en.inc' %}
 
         <nav class="local-header">
 			<div class="container container-relative">
@@ -24,7 +24,7 @@
           <nav class="nav-user pull-xs-right">
               {% if user.is_authenticated %}
               <ul>
-                <li>User: {{ user.get_username }}</li>
+                <li>{{ user.get_username }}</li>
                 <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>   
               </ul>
               {% else %}
@@ -60,11 +60,11 @@
   			</div>
 		</footer>
         
-        <!--% include_external 'https://stijl.kuleuven.be/2016/includes/footer.en.inc' %-->
+        {% include_external 'https://stijl.kuleuven.be/2016/includes/footer.en.inc' %}
 
     </div>
     <aside class="flyout-menu" class="flyout ...">
-       <!--% include_external 'https://stijl.kuleuven.be/2016/includes/flyout.en.inc' %--> 
+       {% include_external 'https://stijl.kuleuven.be/2016/includes/flyout.en.inc' %} 
     </aside>
     <!-- Latest compiled and minified JS -->
     <script src="//stijl.kuleuven.be/releases/latest/js/all.min.js"></script>
